@@ -1,39 +1,21 @@
 package io.socket;
 
+import io.socket.client.Ack;
 import io.socket.client.IO;
 import io.socket.client.Socket;
 import io.socket.emitter.Emitter;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.net.URI;
+import java.nio.charset.StandardCharsets;
 
 public class Fiddle {
 
     public static void main(String[] argz) throws Exception {
-        IO.Options options = new IO.Options();
-
-        Socket socket = IO.socket(URI.create("http://localhost:3000"), options);
-
-        socket.on(Socket.EVENT_CONNECT, new Emitter.Listener() {
-            @Override
-            public void call(Object... args) {
-                System.out.println("connect");
-            }
-        });
-
-        socket.on(Socket.EVENT_CONNECT_ERROR, new Emitter.Listener() {
-            @Override
-            public void call(Object... args) {
-                System.out.println("connect_error: " + args[0]);
-            }
-        });
-
-        socket.on(Socket.EVENT_DISCONNECT, new Emitter.Listener() {
-            @Override
-            public void call(Object... args) {
-                System.out.println("disconnect due to: " + args[0]);
-            }
-        });
-
-        socket.connect();
+        BigInteger ms = BigInteger.valueOf(10).pow(23);
+        long value = ms.longValue();
+        System.out.println(value);
+        System.out.println(Long.MAX_VALUE);
     }
 }
